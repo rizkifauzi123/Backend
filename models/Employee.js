@@ -78,6 +78,25 @@ static find(Nama_Pegawai) {
       });
   });
 }
+
+
+static find(Status) {
+  // lakukan promise, select by nama
+  return new Promise((resolve, reject) => {
+      const sql = "SELECT * FROM employees WHERE Status = ?";
+      db.query(sql, Status, (err, results) => {
+          resolve(results[0]);
+      });
+  });
+}
+
+async getTerminatedEmployees() {
+  return await this.sequelize.models.Employee.findAll({
+    where: {
+      is_terminated: true,
+    },
+  });
+}
 }
 
 // export class Employee

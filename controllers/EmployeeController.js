@@ -150,7 +150,52 @@ const { Nama_Pegawai } = req.params;
 
 }
 
+async search(req, res) {
+  /**
+   
+cari id
+jika ada, kirim datanya
+jika tidak, kirim data tidak ada*/
+const { Status } = req.params;
 
+  const employee = await Employee.find(Status);
+
+  if (employee) {
+      const data = {
+          message: "Menampilkan hasil pencarian Status",
+          data: employee,
+      };
+
+      res.status(200).json(data);
+  }
+  else {
+      const data = {
+          message: "Resource not found",
+      };
+
+      res.status(404).json(data);
+  }
+
+}
+
+
+getTerminatedEmployees = async (req, res) => {
+  try {
+    const terminatedEmployees = await Employee.getTerminatedEmployees();
+    return res.status(200).json({
+      message: "Get terminated resource",
+      total: terminatedEmployees.length,
+      data: terminatedEmployees,
+    });
+  } catch (error) {
+    // Handle errors
+    console.error(error);
+    return res.status(500).json({
+      message: "Internal Server Error",
+      error: error.message,
+    });
+  }
+};
 }
 
 // membuat object EmployeeController
