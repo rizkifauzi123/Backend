@@ -124,17 +124,17 @@ async show(req, res) {
 
 async search(req, res) {
   /**
-   * cari id
-   * jika ada, kirim datanya
-   * jika tidak, kirim data tidak ada
-   */
-  const { Nama_Pegawai } = req.params;
+   
+cari id
+jika ada, kirim datanya
+jika tidak, kirim data tidak ada*/
+const { Nama_Pegawai } = req.params;
 
   const employee = await Employee.find(Nama_Pegawai);
 
   if (employee) {
       const data = {
-          message: "Menampilkan searched resource",
+          message: "Menampilkan hasil pencarian nama sesuai resource",
           data: employee,
       };
 
@@ -149,6 +149,7 @@ async search(req, res) {
   }
 
 }
+
 
 }
 

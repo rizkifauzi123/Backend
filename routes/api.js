@@ -19,10 +19,10 @@ router.post("/employee", EmployeeController.store);
 router.put("/employee/:id", EmployeeController.update);
 router.delete("/employee/:id", EmployeeController.destroy);
 router.get("/employee/:id", EmployeeController.show);
-router.get("/employee/search/:Nama_Pegawai", EmployeeController.search);
-router.get("/employee/status/active", EmployeeController.active);
-router.get("/employee/status/inactive", EmployeeController.inactive);
-router.get("/employee/status/terminated", EmployeeController.terminated);
+router.get('/employees/search/:name', EmployeeController.search);
+// router.get("/employee/status/active", EmployeeController.active);
+// router.get("/employee/status/inactive", EmployeeController.inactive);
+// router.get("/employee/status/terminated", EmployeeController.terminated);
 
 // export router
 module.exports = router;

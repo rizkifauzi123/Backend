@@ -68,10 +68,11 @@ static async delete(id) {
       });
   });
 }
+
 static find(Nama_Pegawai) {
-  // lakukan promise, select by id
+  // lakukan promise, select by nama
   return new Promise((resolve, reject) => {
-      const sql = `SELECT * FROM employees WHERE Nama_Pegawai = ?`;
+      const sql = "SELECT * FROM employees WHERE Nama_Pegawai = ?";
       db.query(sql, Nama_Pegawai, (err, results) => {
           resolve(results[0]);
       });
